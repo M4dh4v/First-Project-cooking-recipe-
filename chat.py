@@ -1,13 +1,13 @@
-import os #for api key
+import os #include for api key in environment
 from groq import Groq
 import streamlit as st
 
 st.title("Enter the food item to give the recipe of:")
-
+key=os.environ.get('GROQ_API_KEY')
 food=st.text_input("")
 if st.button("Search"):
     client = Groq(
-        api_key="",
+        api_key=key,
         #API KEY GOES IN THERE
     )
     completion = client.chat.completions.create(
